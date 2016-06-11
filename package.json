@@ -1,0 +1,22 @@
+{
+  "name": "leo-web",
+  "version": "0.0.1",
+  "description": "node实战训练",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm run clean && babel src -d target --watch",
+    "compile": "npm run clean && babel src -d target",
+    "clean": "rm -rf target"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leo-work/leo-web.git"
+  },
+  "author": "leo <leo16241022@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leo-work/leo-web/issues"
+  },
+  "homepage": "https://github.com/leo-work/leo-web#readme"
+}
