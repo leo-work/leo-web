@@ -21,6 +21,18 @@ $.init.add((done) => {
   done();
 });
 
+//初始化mongodb
+$.init.load(path.resolve(__dirname, 'init', 'mongodb.js'));
+
+//加载Models
+$.init.load(path.resolve(__dirname, 'models'));
+
+//初始化Express
+$.init.load(path.resolve(__dirname, 'init', 'express.js'));
+
+//加载路由
+$.init.load(path.resolve(__dirname, 'routes'));
+
 //初始化
 $.init((err) =>{
   if(err){
@@ -29,4 +41,12 @@ $.init((err) =>{
   }else{
     console.log('init success ! [env = %s]',$.env);
   }
+  // 测试mongodb的连接
+  // const item = new $.model.User({
+  // //  name:`User${$.utils.date('ymd')}`,
+  //   name:'hanqiang',
+  //   password:'123456',
+  //   nickname:'测试用户'
+  // });
+  // item.save(console.log);
 });
