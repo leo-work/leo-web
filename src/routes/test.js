@@ -6,7 +6,8 @@
 */
 
 module.exports = function(done){
-  console.log('首页');
+  const debug = $.createDebug('mongoose');
+  debug('load index ...');
   $.router.get('/',function(req,res,next){
     res.end(`北京时间是：${new Date()}`);
   });

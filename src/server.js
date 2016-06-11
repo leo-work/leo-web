@@ -7,8 +7,16 @@
 
 import path from 'path';
 import ProjectCore from 'project-core';
+import createDebug from 'debug';
 
 const $ = global.$ = new ProjectCore();
+
+//创建debug函数
+$.createDebug = function(name){
+  return createDebug('my:' + name);
+};
+
+const debug = $.createDebug('server');
 
 //加载配置文件
 $.init.add((done) => {
@@ -39,6 +47,7 @@ $.init((err) =>{
     console.error(err);
     process.exit(-1);//异常退出
   }else{
+    //debug('init success ! [env = %s]',$.env);
     console.log('init success ! [env = %s]',$.env);
   }
   // 测试mongodb的连接
