@@ -29,11 +29,17 @@ $.init.add((done) => {
   done();
 });
 
+
+
+
 //初始化mongodb
 $.init.load(path.resolve(__dirname, 'init', 'mongodb.js'));
 
 //加载Models
 $.init.load(path.resolve(__dirname, 'models'));
+
+//加载method
+$.init.load(path.resolve(__dirname, 'method'));
 
 //初始化Express
 $.init.load(path.resolve(__dirname, 'init', 'express.js'));
@@ -50,6 +56,8 @@ $.init((err) =>{
     //debug('init success ! [env = %s]',$.env);
     console.log('init success ! [env = %s]',$.env);
   }
+
+  //require('./test');
   // 测试mongodb的连接
   // const item = new $.model.User({
   // //  name:`User${$.utils.date('ymd')}`,
