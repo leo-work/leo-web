@@ -23,18 +23,17 @@ module.exports = function(done){
   const router = express.Router();
 
   const routerWrap = {};
-  ['get','post','put','del','delete','head'].forEach(method=>{
-    routerWrap[method]=function(path, ...fnList){
-      fnList = fnList.map(fn=>{
-        return function(req,res,next){
-          const ret = fn(req,res,next);
-          if(ret.catch)
-            ret.catch(next);
-        };
-      });
-      router[method](path, ...fnList);
-    }
-  });
+  ['get', 'head', 'post', 'put', 'del', 'delete'].forEach(method => {
+      routerWrap[method] = function (path, ...fnList) {
+        fnList = fnList.map(fn => {
+          return function (req, res, next) {
+            const ret = fn(req, res, next);
+            if (ret && ret.catch) ret.catch(next);
+          };
+        });
+        router[method](path, ...fnList);
+      };
+    });
 
   $.router = routerWrap;
 
